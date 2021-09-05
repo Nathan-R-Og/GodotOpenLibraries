@@ -1,0 +1,150 @@
+[gd_scene load_steps=30 format=2]
+
+[ext_resource path="res://2D Platformer/Player/img/jump/jump.png" type="Texture" id=1]
+[ext_resource path="res://2D Platformer/Player/sfx/Die.wav" type="AudioStream" id=2]
+[ext_resource path="res://2D Platformer/Player/sfx/Walk.wav" type="AudioStream" id=3]
+[ext_resource path="res://2D Platformer/Player/sfx/Jump.wav" type="AudioStream" id=4]
+[ext_resource path="res://2D Platformer/Player/Player.gd" type="Script" id=5]
+[ext_resource path="res://2D Platformer/Player/img/walk/walk1.png" type="Texture" id=6]
+[ext_resource path="res://2D Platformer/Player/img/idleUp/lookUp.png" type="Texture" id=7]
+[ext_resource path="res://2D Platformer/Player/img/win/win5.png" type="Texture" id=8]
+[ext_resource path="res://2D Platformer/Player/img/walk/walk2.png" type="Texture" id=9]
+[ext_resource path="res://2D Platformer/Player/img/run/run1.png" type="Texture" id=10]
+[ext_resource path="res://2D Platformer/Player/img/win/win4.png" type="Texture" id=11]
+[ext_resource path="res://2D Platformer/Player/img/run/run2.png" type="Texture" id=12]
+[ext_resource path="res://2D Platformer/Player/img/die/die.png" type="Texture" id=13]
+[ext_resource path="res://2D Platformer/Player/img/win/win3.png" type="Texture" id=14]
+[ext_resource path="res://2D Platformer/Player/img/idleDown/lookDown.png" type="Texture" id=15]
+[ext_resource path="res://2D Platformer/Player/img/idle/idle.png" type="Texture" id=16]
+[ext_resource path="res://2D Platformer/Player/img/win/win1.png" type="Texture" id=17]
+[ext_resource path="res://2D Platformer/Player/img/win/win2.png" type="Texture" id=18]
+[ext_resource path="res://2D Platformer/Player/img/fall/fall.png" type="Texture" id=19]
+[ext_resource path="res://2D Platformer/Player/img/skid/skid1.png" type="Texture" id=20]
+[ext_resource path="res://2D Platformer/Player/img/skid/skid3.png" type="Texture" id=21]
+[ext_resource path="res://2D Platformer/Player/img/skid/skid5.png" type="Texture" id=22]
+[ext_resource path="res://2D Platformer/Player/img/skid/skid4.png" type="Texture" id=23]
+[ext_resource path="res://2D Platformer/Player/img/skid/skid2.png" type="Texture" id=24]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 10 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "Running",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "Looking Up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 15 ) ],
+"loop": true,
+"name": "Looking Down",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 16 ) ],
+"loop": false,
+"name": "Idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "Jumping",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 13 ) ],
+"loop": true,
+"name": "Die",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 17 ), ExtResource( 18 ), ExtResource( 14 ), ExtResource( 11 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "Win",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 19 ) ],
+"loop": true,
+"name": "Falling",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 20 ), ExtResource( 24 ), ExtResource( 21 ), ExtResource( 23 ), ExtResource( 22 ) ],
+"loop": true,
+"name": "Skid",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "Walking",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 16, 16 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 16, 16 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 12, 8 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "Die"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 0.5, 3, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 9 ), Vector2( 0, -100 ), Vector2( 0, 300 ) ]
+}
+
+[node name="Player" type="KinematicBody2D"]
+position = Vector2( 0, 9 )
+script = ExtResource( 5 )
+
+[node name="PlayerSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "Walking"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Player_InteractArea" type="Area2D" parent="."]
+
+[node name="InteractCollision" type="CollisionShape2D" parent="Player_InteractArea"]
+shape = SubResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="EnemyBounceArea" type="Area2D" parent="."]
+
+[node name="EnemyCollision" type="CollisionShape2D" parent="EnemyBounceArea"]
+position = Vector2( 0, 24 )
+shape = SubResource( 4 )
+
+[node name="JumpSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+
+[node name="WalkSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = 3.828
+
+[node name="ShootSound" type="AudioStreamPlayer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Die = SubResource( 5 )
