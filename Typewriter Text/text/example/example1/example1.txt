@@ -1,0 +1,2 @@
+[font=res://Typewriter Text/text/Standard.tres]{/sfx=A}When you click an option, it directs the typer to a nested version of the text! This is in folder "example1" as the file "example1.txt"![/font]
+[font=res://Typewriter Text/text/Standard.tres]{/sfx=A}From here you can keep branching or quit and start a new one later![/font]

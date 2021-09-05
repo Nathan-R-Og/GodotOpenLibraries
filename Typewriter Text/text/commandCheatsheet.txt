@@ -1,0 +1,26 @@
+do >command= and then the required lines before a message for it to be associated with it
+current >command='s:
+Item
+syntax: Item Name
+Item_Remove
+syntax: Item Name
+Branch
+syntax: amount to render
+syntax*n amount: text option
+
+example:
+>command=
+Item
+Potion
+[message]
+
+>command=
+Branch
+6
+One
+two
+3
+for
+51vE
+six
+[message]

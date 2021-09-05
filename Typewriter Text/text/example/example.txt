@@ -1,0 +1,9 @@
+[font=res://Typewriter Text/text/Standard.tres]{/sfx=A}This is a message!{/wait=1.0} Wouldn't you agree?[/font]
+[font=res://Typewriter Text/text/Standard.tres]{/sfx=A}The last message gave an error,{/wait=0.5} and thats probably because you dont have the file "A.wav" at res://sfx/ ![/font]
+[font=res://Typewriter Text/text/Standard.tres]{/sfx=A}This message will have an error now {/animation1=error}!{/wait=1.0} You can h{/wait=0.1}av{/sfx=B}e meta{/animation2=data}data {/animFX1=play} anywhere in the message![/font]
+>command=
+Branch
+2
+Hi
+Hello
+[font=res://Typewriter Text/text/Standard.tres]{/sfx=A}The options for this message will appear when I say quack.{/wait=10.0} Quack.[/font]

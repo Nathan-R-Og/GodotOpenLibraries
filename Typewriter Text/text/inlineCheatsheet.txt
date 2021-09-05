@@ -1,0 +1,16 @@
+ignoring bbcode, you can use the wavy brackets to make your own metaData.
+the current {/metaData}'s are:
+{/animation[characterNumber]=(string:animationName)}
+{/wait=(float:time)}
+{/sfx=(string:sfxFileName)}
+{/animFX=(string:effect)}
+
+
+examples:
+{/animation2=Pose}
+{/wait=99.0}
+{/sfx=blip1}
+{/animFX1=stop}
+
+make ABSOULTE SURE that they do not precede the starting bbcode in ANY fashion.
+it wont be read otherwise.
